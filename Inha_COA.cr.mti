@@ -1,0 +1,22 @@
+C:/Modeltech_pe_edu_10.4a/Inha_COA/RegisterFile.v {1 {vlog -work work -stats=none C:/Modeltech_pe_edu_10.4a/Inha_COA/RegisterFile.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module REGISTERFILE
+
+Top level modules:
+	REGISTERFILE
+
+} {} {}} C:/Modeltech_pe_edu_10.4a/Inha_COA/NextAddress.v {1 {vlog -work work -stats=none C:/Modeltech_pe_edu_10.4a/Inha_COA/NextAddress.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module NEXTADDRESS
+
+Top level modules:
+	NEXTADDRESS
+
+} {} {}} C:/Modeltech_pe_edu_10.4a/Inha_COA/NextAddress_tb.v {1 {vlog -work work -stats=none C:/Modeltech_pe_edu_10.4a/Inha_COA/NextAddress_tb.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module NEXTADDRESS_TB
+
+Top level modules:
+	NEXTADDRESS_TB
+
+} {} {}}
