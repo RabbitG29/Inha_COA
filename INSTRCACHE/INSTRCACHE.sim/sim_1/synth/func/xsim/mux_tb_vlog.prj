@@ -1,0 +1,7 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"mux_tb_func_synth.v" \
+"../../../../../project_39.srcs/sim_1/new/mux_tb.v" \
+
+# Do not sort compile order
+nosort
