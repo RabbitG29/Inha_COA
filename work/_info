@@ -9,61 +9,61 @@ z2
 cModel Technology
 dC:/Modeltech_pe_edu_10.4a/examples
 vNEXTADDRESS
-!s110 1543650295
+Z0 !s110 1543851262
 !i10b 1
 !s100 F0W;Y]?bOTP>4`3:fY]XD3
 Ihd^j;z3`ff2[hXGcJd>Kh1
-Z0 VDg1SIo80bB@j0V0VzS_@n1
-Z1 dC:/Modeltech_pe_edu_10.4a/Inha_COA
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dC:/Modeltech_pe_edu_10.4a/Inha_COA
 w1543642750
 8C:/Modeltech_pe_edu_10.4a/Inha_COA/NextAddress.v
 FC:/Modeltech_pe_edu_10.4a/Inha_COA/NextAddress.v
 L0 1
-Z2 OP;L;10.4a;61
+Z3 OP;L;10.4a;61
 r1
 !s85 0
 31
-!s108 1543650295.000000
+!s108 1543851261.000000
 !s107 C:/Modeltech_pe_edu_10.4a/Inha_COA/NextAddress.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Modeltech_pe_edu_10.4a/Inha_COA/NextAddress.v|
 !s101 -O0
 !i113 1
-Z3 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact -O0
+Z4 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact -O0
 n@n@e@x@t@a@d@d@r@e@s@s
 vNEXTADDRESS_TB
-Z4 !s110 1543650296
+R0
 !i10b 1
 !s100 0i^9@DS58Aj:JbSBlWmMQ3
 IU[4HQm6_dOB6JOb>FAcAd1
-R0
 R1
+R2
 w1543642892
 8C:/Modeltech_pe_edu_10.4a/Inha_COA/NextAddress_tb.v
 FC:/Modeltech_pe_edu_10.4a/Inha_COA/NextAddress_tb.v
 L0 1
-R2
+R3
 r1
 !s85 0
 31
-Z5 !s108 1543650296.000000
+Z5 !s108 1543851262.000000
 !s107 C:/Modeltech_pe_edu_10.4a/Inha_COA/NextAddress_tb.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Modeltech_pe_edu_10.4a/Inha_COA/NextAddress_tb.v|
 !s101 -O0
 !i113 1
-R3
+R4
 n@n@e@x@t@a@d@d@r@e@s@s_@t@b
 vREGISTERFILE
-R4
+Z6 !s110 1543851263
 !i10b 1
 !s100 9m3Q2eX2eiL;S`:XKokU;0
 I>2]dieFnJ=oY?mzRCl<Vz1
-R0
 R1
+R2
 w1543650288
 8C:/Modeltech_pe_edu_10.4a/Inha_COA/RegisterFile.v
 FC:/Modeltech_pe_edu_10.4a/Inha_COA/RegisterFile.v
 L0 5
-R2
+R3
 r1
 !s85 0
 31
@@ -72,5 +72,27 @@ R5
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Modeltech_pe_edu_10.4a/Inha_COA/RegisterFile.v|
 !s101 -O0
 !i113 1
-R3
+R4
 n@r@e@g@i@s@t@e@r@f@i@l@e
+vResultDst
+R6
+!i10b 1
+!s100 9W`AJGoe<?H<bb3SA?^4L1
+I85?@Ug5Tk^P7R>jgk7<Nj2
+R1
+R2
+w1543851260
+8C:/Modeltech_pe_edu_10.4a/Inha_COA/ResultDst.v
+FC:/Modeltech_pe_edu_10.4a/Inha_COA/ResultDst.v
+L0 6
+R3
+r1
+!s85 0
+31
+!s108 1543851263.000000
+!s107 C:/Modeltech_pe_edu_10.4a/Inha_COA/ResultDst.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Modeltech_pe_edu_10.4a/Inha_COA/ResultDst.v|
+!s101 -O0
+!i113 1
+R4
+n@result@dst
