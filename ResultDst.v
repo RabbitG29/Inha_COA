@@ -1,14 +1,14 @@
 /*
-Date : 2018-12-01
+Date : 2018-12-03
 Name : ResultDst
 */
 
-module ResultDst(RIn1, RIn2, DstType, D, DataPos);
+module RESULTDST(RIn1, RIn2, DstType, D, DataPos);
 input [1:0] RIn1;
 input [1:0] RIn2;
 input [1:0] DstType; // control signal
 input [1:0] D;
-wire ResultDst;
+
 output reg [1:0] DataPos;
 
 
