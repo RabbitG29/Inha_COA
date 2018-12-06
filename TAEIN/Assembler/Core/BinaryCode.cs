@@ -16,6 +16,7 @@ namespace Assembler.Core
 
         private static byte[] ConvertStringToBinaryBytes(string str)
         {
+            System.Console.WriteLine(str);
             byte[] bin = new byte[BYTESIZE];
             /* MLD D2 [1]
              000000 01 0000000000000000000001 00 // 32bit

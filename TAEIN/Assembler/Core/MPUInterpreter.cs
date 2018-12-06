@@ -20,7 +20,7 @@ namespace Assembler.Core
         }
         private BinaryCode InterpretCode(string code)
         {
-            BinaryCode binaryCode = new BinaryCode("00000001000000000000000000000100");
+            BinaryCode binaryCode;
 
             string[] words = code.Split(delimiters);
             switch (words[0])
@@ -65,7 +65,7 @@ namespace Assembler.Core
                 case "ZERO":
                     binaryCode = makeZERO(code);
                     break;
-                default:
+                default://명령어가 아니라 변수공간임
                     binaryCode = new BinaryCode("00000000000000000000000000000000");
                     break;
             }
@@ -105,7 +105,7 @@ namespace Assembler.Core
             for (int i = 0; i < preprocessedCodeStringList.Count; i++)
             {
                 var code = preprocessedCodeStringList[i];
-                string[] words = code.Split(delimiters);
+                string[] words = code.Split(delimiters).Where(x => !string.IsNullOrEmpty(x)).ToArray();
                 for (int j = 1; j < words.Length; j++)
                 {
                     string word = words[j];

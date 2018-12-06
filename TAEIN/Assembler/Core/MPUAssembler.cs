@@ -1,34 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-/*
- * JMP begin
- * x0 6
- * x1 36
- * x2 6
- * x3 36
- * y0 36
- * y1 6
- * y2 36
- * y3 6
- * begin:
- * MLD D1, x0
- * MLD D2, y0
- * MADD D1, D2
- */
 namespace Assembler.Core
 {
     public class MPUAssembler
     {
         public MPUAssembler(string path)
         {
+            System.Console.WriteLine("Reading code...");
             ReadCode(path);
             CodeBinaryList = new List<BinaryCode>(CodeStringList.Count);
+            System.Console.WriteLine("Processing code...");
             ProcessCode();
+            System.Console.WriteLine("Process complete");
         }
 
         public byte[] getMachineCode()
@@ -46,7 +31,7 @@ namespace Assembler.Core
             return result;
         }
 
-        public bool saveMachineCode(string path)
+        public bool SaveMachineCode(string path)
         {
             FileStream fileStream = new FileStream(path, FileMode.Create);
             using (BinaryWriter writer = new BinaryWriter(fileStream))
@@ -54,6 +39,7 @@ namespace Assembler.Core
                 writer.Write(getMachineCode());
             }
 
+            System.Console.WriteLine("Saved binary file");
             return true;
         }
 
@@ -84,7 +70,9 @@ namespace Assembler.Core
         {
             // throw new MPUException("test exception");
             MPUInterpreter interpreter = new MPUInterpreter();
+            System.Console.WriteLine("Preprocessing code...");
             interpreter.Preprocess(CodeStringList);
+            System.Console.WriteLine("Interpreting code...");
             CodeBinaryList = interpreter.InterPret();
         }
 
