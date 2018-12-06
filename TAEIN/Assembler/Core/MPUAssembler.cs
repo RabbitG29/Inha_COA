@@ -35,12 +35,12 @@ namespace Assembler.Core
         {
             //byte[] a = { 0x00, 0x01, 0x02 };
             byte[] result = new byte[CodeBinaryList.Count * 4];
-            for (int i = 0; i < CodeBinaryList.Count; i=i+4)
+            for (int i = 0; i < CodeBinaryList.Count; i++)
             {
-                result[i] = CodeBinaryList[i].Bin[0];
-                result[i+1] = CodeBinaryList[i].Bin[1];
-                result[i+2] = CodeBinaryList[i].Bin[2];
-                result[i+3] = CodeBinaryList[i].Bin[3];
+                result[4*i] = CodeBinaryList[i].Bin[0];
+                result[4*i+1] = CodeBinaryList[i].Bin[1];
+                result[4*i+2] = CodeBinaryList[i].Bin[2];
+                result[4*i+3] = CodeBinaryList[i].Bin[3];
             }
 
             return result;
@@ -85,10 +85,7 @@ namespace Assembler.Core
             // throw new MPUException("test exception");
             MAUInterpreter interpreter = new MAUInterpreter();
             interpreter.Preprocess(CodeStringList);
-            foreach (string code in CodeStringList)
-            {
-                CodeBinaryList.Add(interpreter.InterpretCode(code));
-            }
+            CodeBinaryList = interpreter.InterPret();
         }
 
         private List<string> CodeStringList { get; set; }
