@@ -83,9 +83,20 @@ namespace Assembler.Core
             for (int i = 0; i < codeStringList.Count; i++)
             {
                 string code = codeStringList[i];
-                string[] words = code.Split(delimiters);
+
+                // 빈 줄 제거
+                if (code.All(c => c.Equals(' ') || c.Equals('\t') || c.Equals('\r') || c.Equals('\n')))
+                {
+                    continue;
+                }
+
+                string[] words = code.Split(delimiters).Where(x => !string.IsNullOrEmpty(x)).ToArray();
                 if (words[0].Contains(":"))
                 {
+                    if (words.Length > 1)
+                    {
+                        throw new MPUException("You have to break the line right after ':'");
+                    }
                     int address = i - foundCount;
                     addressDictionary.Add(code.Substring(0, code.IndexOf(":", StringComparison.Ordinal)), address);
                     foundCount++;
