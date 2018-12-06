@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Assembler.Core
 {
-    public class MAUInterpreter
+    public class MPUInterpreter
     {
         public List<BinaryCode> InterPret()
         {

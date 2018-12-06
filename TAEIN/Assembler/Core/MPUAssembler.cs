@@ -83,7 +83,7 @@ namespace Assembler.Core
         private void ProcessCode()
         {
             // throw new MPUException("test exception");
-            MAUInterpreter interpreter = new MAUInterpreter();
+            MPUInterpreter interpreter = new MPUInterpreter();
             interpreter.Preprocess(CodeStringList);
             CodeBinaryList = interpreter.InterPret();
         }
