@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,18 +24,52 @@ namespace Assembler.Core
 {
     public class MPUAssembler
     {
-        void ReadCode(List<string> list)
+        public MPUAssembler(string path)
+        {
+            ReadCode(path);
+            CodeBinaryList = new List<BinaryCode>(CodeStringList.Count);
+            ProcessCode();
+        }
+
+        public byte[] getMachineCode()
+        {
+            //byte[] a = { 0x00, 0x01, 0x02 };
+            byte[] result = new byte[CodeBinaryList.Count * 4];
+            for (int i = 0; i < CodeBinaryList.Count; i=i+4)
+            {
+                result[i] = CodeBinaryList[i].Bin[0];
+                result[i+1] = CodeBinaryList[i].Bin[1];
+                result[i+2] = CodeBinaryList[i].Bin[2];
+                result[i+3] = CodeBinaryList[i].Bin[3];
+            }
+
+            return result;
+        }
+
+        public bool saveMachineCode(string path)
+        {
+            FileStream fileStream = new FileStream(path, FileMode.Create);
+            using (BinaryWriter writer = new BinaryWriter(fileStream))
+            {
+                writer.Write(getMachineCode());
+            }
+
+            return true;
+        }
+
+        private void ReadCode(string path)
         {
             try
             {
                 System.IO.StreamReader file =
-                    new System.IO.StreamReader(@"..\..\Resource\test.mau");
+                    new System.IO.StreamReader(path);
 
+                CodeStringList = new List<string>();
                 string line;
                 while ((line = file.ReadLine()) != null)
                 {
-                    System.Console.WriteLine(line);
-                    list.Add(line);
+                    //System.Console.WriteLine(line);
+                    CodeStringList.Add(line);
                 }
 
                 file.Close();
@@ -44,5 +79,19 @@ namespace Assembler.Core
                 Console.WriteLine(ex);
             }
         }
+
+        private void ProcessCode()
+        {
+            // throw new MPUException("test exception");
+            MAUInterpreter interpreter = new MAUInterpreter();
+            interpreter.Preprocess(CodeStringList);
+            foreach (string code in CodeStringList)
+            {
+                CodeBinaryList.Add(interpreter.InterpretCode(code));
+            }
+        }
+
+        private List<string> CodeStringList { get; set; }
+        private List<BinaryCode> CodeBinaryList { get; set; }
     }
 }
