@@ -73,7 +73,7 @@ namespace Assembler.Core
             System.Console.WriteLine("Preprocessing code...");
             interpreter.Preprocess(CodeStringList);
             System.Console.WriteLine("Interpreting code...");
-            CodeBinaryList = interpreter.InterPret();
+            CodeBinaryList = interpreter.Interpret();
         }
 
         private List<string> CodeStringList { get; set; }

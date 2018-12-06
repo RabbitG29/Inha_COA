@@ -7,7 +7,7 @@ namespace Assembler.Core
 {
     public class MPUInterpreter
     {
-        public List<BinaryCode> InterPret()
+        public List<BinaryCode> Interpret()
         {
             List<BinaryCode> codeBinaryList = new List<BinaryCode>(preprocessedCodeStringList.Count);
 
