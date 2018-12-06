@@ -7,6 +7,10 @@ namespace Assembler.Core
 {
     public class MPUInterpreter
     {
+        /// <summary>
+        /// 전처리가 완료된 코드를 해석하여 기계어 코드 객체로 변환
+        /// </summary>
+        /// <returns></returns>
         public List<BinaryCode> Interpret()
         {
             List<BinaryCode> codeBinaryList = new List<BinaryCode>(preprocessedCodeStringList.Count);
@@ -18,6 +22,7 @@ namespace Assembler.Core
 
             return codeBinaryList;
         }
+
         private BinaryCode InterpretCode(string code)
         {
             BinaryCode binaryCode;
@@ -73,9 +78,10 @@ namespace Assembler.Core
             return binaryCode;
         }
 
-        /* Label이 가리키는 주소 & 변수 공간의 주소를 addressDictionary에 추가하고,
-         명령어에서 Label 혹은 변수 공간을 가리키는 경우 실제 address로 대체
-        */
+        /// <summary>
+        /// 코드의 빈 줄을 제거하거나, Label이 가리키는 주소 & 변수 공간의 주소를 실제로 계산해서 대체함
+        /// </summary>
+        /// <param name="codeStringList">전처리가 되지 않은 텍스트 형태의 소스 코드</param>
         public void Preprocess(List<string> codeStringList)
         {
             // 1. Label이 가리키는 주소 & 변수 공간의 주소를 addressDictionary에 추가
@@ -84,7 +90,7 @@ namespace Assembler.Core
             {
                 string code = codeStringList[i];
 
-                // 빈 줄 제거
+                // 빈 줄이면 무시하고 다음 루프로
                 if (code.All(c => c.Equals(' ') || c.Equals('\t') || c.Equals('\r') || c.Equals('\n')))
                 {
                     continue;
@@ -97,7 +103,7 @@ namespace Assembler.Core
                     {
                         throw new MPUException("You have to break the line right after ':'");
                     }
-                    int address = i - foundCount;
+                    int address = i - foundCount; // Label이 있던 줄은 무시하고 계산해야 하므로
                     addressDictionary.Add(code.Substring(0, code.IndexOf(":", StringComparison.Ordinal)), address);
                     foundCount++;
                 }

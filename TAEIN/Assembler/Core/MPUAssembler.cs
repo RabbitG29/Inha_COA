@@ -16,7 +16,11 @@ namespace Assembler.Core
             System.Console.WriteLine("Process complete");
         }
 
-        public byte[] getMachineCode()
+        /// <summary>
+        /// 해석이 완료된 코드의 바이트 배열을 가져옴
+        /// </summary>
+        /// <returns></returns>
+        public byte[] GetMachineCode()
         {
             //byte[] a = { 0x00, 0x01, 0x02 };
             byte[] result = new byte[CodeBinaryList.Count * 4];
@@ -31,12 +35,17 @@ namespace Assembler.Core
             return result;
         }
 
+        /// <summary>
+        /// 해석이 완료된 코드를 바이너리 파일 형태로 저장
+        /// </summary>
+        /// <param name="path">저장될 파일의 경로(파일명.확장자 포함)</param>
+        /// <returns>저장 성공 여부</returns>
         public bool SaveMachineCode(string path)
         {
             FileStream fileStream = new FileStream(path, FileMode.Create);
             using (BinaryWriter writer = new BinaryWriter(fileStream))
             {
-                writer.Write(getMachineCode());
+                writer.Write(GetMachineCode());
             }
 
             System.Console.WriteLine("Saved binary file");
