@@ -138,6 +138,9 @@ namespace Assembler.Core
              000000 01 0000000000000000000001 00 // 32bit
             */
             string[] words = code.Split(delimiters).Where(x => !string.IsNullOrEmpty(x)).ToArray();
+            const int operandLength = 3;
+            CheckOperandLength(words.Length, operandLength);
+
             StringBuilder result = new StringBuilder();
             result.Append("000000"); // OPCode
 
@@ -173,6 +176,9 @@ namespace Assembler.Core
              000001 0000000000000000000001 01 00 // 32bit
             */
             string[] words = code.Split(delimiters).Where(x => !string.IsNullOrEmpty(x)).ToArray();
+            const int operandLength = 3;
+            CheckOperandLength(words.Length, operandLength);
+
             StringBuilder result = new StringBuilder();
             result.Append("000001"); // OPCode
 
@@ -200,6 +206,9 @@ namespace Assembler.Core
              001000 00 01 0000000000000000000000 // 32bit
             */
             string[] words = code.Split(delimiters).Where(x => !string.IsNullOrEmpty(x)).ToArray();
+            const int operandLength = 3;
+            CheckOperandLength(words.Length, operandLength);
+
             StringBuilder result = new StringBuilder();
             result.Append("001000"); // OPCode
 
@@ -234,6 +243,9 @@ namespace Assembler.Core
              001001 00 01 0000000000000000000000 // 32bit
             */
             string[] words = code.Split(delimiters).Where(x => !string.IsNullOrEmpty(x)).ToArray();
+            const int operandLength = 3;
+            CheckOperandLength(words.Length, operandLength);
+
             StringBuilder result = new StringBuilder();
             result.Append("001001"); // OPCode
 
@@ -268,6 +280,9 @@ namespace Assembler.Core
              001100 00 01 0000000000000000000000 // 32bit
             */
             string[] words = code.Split(delimiters).Where(x => !string.IsNullOrEmpty(x)).ToArray();
+            const int operandLength = 3;
+            CheckOperandLength(words.Length, operandLength);
+
             StringBuilder result = new StringBuilder();
             result.Append("001100"); // OPCode
 
@@ -302,6 +317,9 @@ namespace Assembler.Core
              001101 00 0000000000000000100100 00 // 32bit
             */
             string[] words = code.Split(delimiters).Where(x => !string.IsNullOrEmpty(x)).ToArray();
+            const int operandLength = 3;
+            CheckOperandLength(words.Length, operandLength);
+
             StringBuilder result = new StringBuilder();
             result.Append("001101"); // OPCode
 
@@ -328,6 +346,9 @@ namespace Assembler.Core
              011000 00 01 0000000000000000000000 // 32bit
             */
             string[] words = code.Split(delimiters).Where(x => !string.IsNullOrEmpty(x)).ToArray();
+            const int operandLength = 3;
+            CheckOperandLength(words.Length, operandLength);
+
             StringBuilder result = new StringBuilder();
             result.Append("011000"); // OPCode
 
@@ -362,6 +383,9 @@ namespace Assembler.Core
              011001 00 00 01 11 0000000000000000000000 // 32bit
             */
             string[] words = code.Split(delimiters).Where(x => !string.IsNullOrEmpty(x)).ToArray();
+            const int operandLength = 5;
+            CheckOperandLength(words.Length, operandLength);
+
             StringBuilder result = new StringBuilder();
             result.Append("011001"); // OPCode
 
@@ -405,6 +429,9 @@ namespace Assembler.Core
              011100 0000000000000000001110 0000 // 32bit
             */
             string[] words = code.Split(delimiters).Where(x => !string.IsNullOrEmpty(x)).ToArray();
+            const int operandLength = 2;
+            CheckOperandLength(words.Length, operandLength);
+
             StringBuilder result = new StringBuilder();
             result.Append("011100"); // OPCode
 
@@ -422,6 +449,9 @@ namespace Assembler.Core
              011101 0000000000000000001110 0000 // 32bit
             */
             string[] words = code.Split(delimiters).Where(x => !string.IsNullOrEmpty(x)).ToArray();
+            const int operandLength = 2;
+            CheckOperandLength(words.Length, operandLength);
+
             StringBuilder result = new StringBuilder();
             result.Append("011101"); // OPCode
 
@@ -439,6 +469,9 @@ namespace Assembler.Core
              011110 0000000000000000001110 0000 // 32bit
             */
             string[] words = code.Split(delimiters).Where(x => !string.IsNullOrEmpty(x)).ToArray();
+            const int operandLength = 2;
+            CheckOperandLength(words.Length, operandLength);
+
             StringBuilder result = new StringBuilder();
             result.Append("011110"); // OPCode
 
@@ -456,6 +489,9 @@ namespace Assembler.Core
              011111 0000000000000000001110 0000 // 32bit
             */
             string[] words = code.Split(delimiters).Where(x => !string.IsNullOrEmpty(x)).ToArray();
+            const int operandLength = 2;
+            CheckOperandLength(words.Length, operandLength);
+
             StringBuilder result = new StringBuilder();
             result.Append("011111"); // OPCode
 
@@ -473,6 +509,9 @@ namespace Assembler.Core
              100100 00 000000000000000000000000 // 32bit
             */
             string[] words = code.Split(delimiters).Where(x => !string.IsNullOrEmpty(x)).ToArray();
+            const int operandLength = 2;
+            CheckOperandLength(words.Length, operandLength);
+
             StringBuilder result = new StringBuilder();
             result.Append("100100"); // OPCode
 
@@ -490,6 +529,14 @@ namespace Assembler.Core
 
             if (result.Length != 32) { throw new MPUException("Command length is not 32"); }
             return new BinaryCode(result.ToString());
+        }
+
+        private void CheckOperandLength(int wordsLength, int operandLength)
+        {
+            if (wordsLength != operandLength)
+            {// Operand 갯수 안맞는 경우
+                throw new MPUException($"Operand number mismatch in {new System.Diagnostics.StackTrace().GetFrame(1).GetMethod()}");
+            }
         }
 
         private static readonly List<string> preprocessedCodeStringList = new List<string>();
