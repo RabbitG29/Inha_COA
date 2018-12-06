@@ -92,7 +92,7 @@ namespace Assembler.Core
 
                 string[] words = code.Split(delimiters).Where(x => !string.IsNullOrEmpty(x)).ToArray();
                 if (words[0].Contains(":"))
-                {
+                {// Label
                     if (words.Length > 1)
                     {
                         throw new MPUException("You have to break the line right after ':'");
@@ -102,13 +102,13 @@ namespace Assembler.Core
                     foundCount++;
                 }
                 else if (!COMMANDS.Contains(words[0]))
-                {
+                {// 변수 공간
                     int address = i - foundCount;
                     addressDictionary.Add(words[0], address);
                     preprocessedCodeStringList.Add(code);
                 }
                 else
-                {
+                {// 코드
                     preprocessedCodeStringList.Add(code);
                 }
             }
