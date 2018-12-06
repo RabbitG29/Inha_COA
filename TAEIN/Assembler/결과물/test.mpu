@@ -1,0 +1,22 @@
+JMP begin
+x: 
+x0 6
+x1 36
+x2 6
+x3 36
+y:
+y0 36
+y1 6
+y2 36
+y3 6
+z:
+z0 0
+z1 0
+z2 0
+z3 0
+begin:
+MLD D1, x0
+begin2:
+MLD D2, y0
+MADD D1, D2
+MSTR z0, D3
