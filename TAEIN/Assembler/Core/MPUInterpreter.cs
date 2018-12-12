@@ -28,7 +28,7 @@ namespace Assembler.Core
             BinaryCode binaryCode;
 
             string[] words = code.Split(delimiters);
-            switch (words[0])
+            switch (words[0].ToUpper())
             {
                 // I???, I???I는 미구현
                 case "MLD":
@@ -107,7 +107,7 @@ namespace Assembler.Core
                     addressDictionary.Add(code.Substring(0, code.IndexOf(":", StringComparison.Ordinal)), address);
                     foundCount++;
                 }
-                else if (!COMMANDS.Contains(words[0]))
+                else if (!COMMANDS.Contains(words[0].ToUpper()))
                 {// 변수 공간
                     int address = i - foundCount;
                     addressDictionary.Add(words[0], address);
