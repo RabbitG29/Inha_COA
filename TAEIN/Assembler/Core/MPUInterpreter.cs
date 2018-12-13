@@ -14,12 +14,10 @@ namespace Assembler.Core
         public List<BinaryCode> Interpret()
         {
             List<BinaryCode> codeBinaryList = new List<BinaryCode>(preprocessedCodeStringList.Count);
-
             foreach (string code in preprocessedCodeStringList)
             {
                 codeBinaryList.Add(InterpretCode(code));
             }
-
             return codeBinaryList;
         }
 
@@ -71,7 +69,9 @@ namespace Assembler.Core
                     binaryCode = makeZERO(code);
                     break;
                 default://명령어가 아니라 변수공간임
-                    binaryCode = new BinaryCode("00000000000000000000000000000000");
+                    UInt32 value = Convert.ToUInt32(words[1]);
+                    string binValue = Convert.ToString(value, 2).PadLeft(32,'0');
+                    binaryCode = new BinaryCode(binValue);
                     break;
             }
 
