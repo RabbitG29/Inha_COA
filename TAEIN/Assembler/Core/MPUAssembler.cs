@@ -78,13 +78,14 @@ namespace Assembler.Core
         private void ProcessCode()
         {
             // throw new MPUException("test exception");
-            MPUInterpreter interpreter = new MPUInterpreter();
+            interpreter = new MPUInterpreter();
             System.Console.WriteLine("Preprocessing code...");
             interpreter.Preprocess(CodeStringList);
             System.Console.WriteLine("Interpreting code...");
             CodeBinaryList = interpreter.Interpret();
         }
 
+        private MPUInterpreter interpreter;
         private List<string> CodeStringList { get; set; }
         private List<BinaryCode> CodeBinaryList { get; set; }
     }
