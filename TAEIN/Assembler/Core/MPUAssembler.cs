@@ -77,7 +77,6 @@ namespace Assembler.Core
 
         private void ProcessCode()
         {
-            // throw new MPUException("test exception");
             interpreter = new MPUInterpreter();
             System.Console.WriteLine("Preprocessing code...");
             interpreter.Preprocess(CodeStringList);
