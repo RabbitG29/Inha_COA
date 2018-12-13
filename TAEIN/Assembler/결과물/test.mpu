@@ -15,8 +15,9 @@ z1 0
 z2 0
 z3 0
 begin:
-MLD D1, x0
-begin2:
-MLD D2, y0
+MLD D1, x
+MLD D2, y
 MADD D1, D2
 MSTR z0, D3
+end:
+jmp end
